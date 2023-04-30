@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {OktaAuthService} from '@okta/okta-angular';
+import {Component, Inject, OnInit} from '@angular/core';
+import { OktaAuth} from '@okta/okta-auth-js';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import myAppConfig from 'src/app/config/my-app-config';
+import {OKTA_AUTH} from '@okta/okta-angular';
+
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   oktaSignIn: any;
 
-  constructor(private oktaAuthService: OktaAuthService) {
+  constructor(@Inject(OKTA_AUTH) private oktaAuthService: OktaAuth) {
     this.oktaSignIn = new OktaSignIn({
         logo: 'assets/images/logo.png',
         features: {

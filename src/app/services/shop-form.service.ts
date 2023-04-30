@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Country} from '../common/country';
 import {map} from 'rxjs/operators';
 import {State} from '../common/state';
+import {environment} from '../../environments/environment';
 
 
 @Injectable({
@@ -11,8 +12,8 @@ import {State} from '../common/state';
 })
 export class ShopFormService {
 
-  private countriesUrl = 'http://localhost:8080/api/countries';
-  private statesUrl = 'http://localhost:8080/api/states';
+  private countriesUrl = environment.eCommApiUrl + '/countries';
+  private statesUrl = environment.eCommApiUrl + '/states';
 
   constructor(private httpClient: HttpClient) {
   }

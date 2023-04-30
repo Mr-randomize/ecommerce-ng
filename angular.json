@@ -16,6 +16,15 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "@babel/runtime-corejs3",
+              "@okta/okta-signin-widget",
+              "detect-node",
+              "tiny-emitter",
+              "p-cancelable",
+              "cross-fetch"
+            ],
             "outputPath": "dist/ecommerce-ng",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -61,6 +70,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ]
             }
           }
         },
@@ -72,6 +89,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ecommerce-ng:build:production"
+            },
+            "qa": {
+              "browserTarget": "ecommerce-ng:build:qa"
             }
           }
         },
